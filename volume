@@ -1,0 +1,38 @@
+#! /bin/sh
+
+#mute=$(amixer get Master | awk -F'[][]' 'END{ print $6 }' )
+#vol=$(amixer get Master | awk -F'[][]' 'END{ print $2 }' )
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+vol="${vol#Volume: }"
+
+split() {
+     # For ommiting the . without calling and external program.
+     IFS=$2
+     set -- $1
+     printf '%s' "$@"
+}
+
+vol="$(printf "%.0f" "$(split "$vol" ".")")"
+
+iconmute=󰝟
+ramp1=󰕿
+ramp2=󰖀
+ramp3=󰕾
+ramp4=󱄠
+
+#if [[ $mute == "true" ]]; then
+#    echo " $iconmute $vol% "
+if wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; then
+    echo "$iconmute $vol% "
+	exit
+elif [[ "$vol" -ge "100" ]]; then
+    echo "$ramp3 $vol% "
+elif [[ "$vol" -le "33" ]]; then
+    echo "$ramp1 $vol% "
+elif [[ "$vol" -le "66" ]]; then
+    echo "$ramp2 $vol% "
+elif [[ "$vol" -le "100" ]]; then
+    echo "$ramp3 $vol% "
+elif [[ "$vol" -ge "101" ]]; then
+    echo "$ramp4 $vol% "
+fi

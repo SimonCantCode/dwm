@@ -14,7 +14,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 20;       /* horizontal padding of bar */
 static const char buttonbar[]       = " 󰣇 ";
-static const char *fonts[]          = { "HackNerdFont-Regular:size=15", "monospace:size=10" };
+static const char *fonts[]          = { "HackNerdFont-Regular:size=15", "monospace:size=10", "Noto Color Emoji:size=15" };
 static const char dmenufont[]       = "monospace:size=15";
 
 #include "/home/21side/.cache/wal/colors-wal-dwm.h"
@@ -34,6 +34,7 @@ static const char col_cyan[]        = "#005577";
 
 /* tagging */
 static const char *tags[] = { "O", "w", "O", "U", "w", "U", ">", "w", "<" };
+//static const char *tags[] = { "󱦗", "󱦘", "󱦗", "󱦘", "󱦗", "󱦘", "󱦗", "󱦘", "󱦗" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -86,6 +87,7 @@ static const char *termcmd[]  = { "kitty", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = dmenucmd } },
 	{ MODKEY,			            XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -101,8 +103,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,			            XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -121,6 +122,8 @@ static const Key keys[] = {
 	{ MODKEY,						XK_Left,   shiftview,	   {.i = -1} },
 	{ MODKEY,						XK_Right,  shiftview,	   {.i = +1} },
 	{ MODKEY|ShiftMask,		        XK_q,      quit,           {0} },
+	{ 0,							XK_Print,	spawn,			{.v = (const char*[]){ "flameshot", "gui", NULL } } },
+	//{ 0,							XK_section, spawn,				{.v = (const char*[]){ "xdotool", "type", "'🎀'", NULL } } },
 
 	{ 0,							XF86XK_MonBrightnessUp,		spawn,		{.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
 	{ 0,							XF86XK_MonBrightnessDown,	spawn,		{.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
