@@ -1,11 +1,10 @@
-# dwm
-![](https://img.shields.io/badge/autism-included-brightgreen)
-
+# dwm ![](https://img.shields.io/badge/autism-included-brightgreen)
 
 ![](pictures/2025-08-02.png)
-
-
+Figure 1. Newest rice
+  
 ![](pictures/winter_rice.png)
+Figure 2. Old winter rice. Not much has changed
 
 ## Documentation
 the code is the documentation.
