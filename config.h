@@ -14,10 +14,10 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 20;       /* horizontal padding of bar */
 static const char buttonbar[]       = " 󰣇 ";
-static const char *fonts[]          = { "HackNerdFont-Regular:size=15", "monospace:size=10", "Noto Color Emoji:size=15" };
+static const char *fonts[]          = { "LionCub-Regular:size=20", "HackNerdFont-Regular:size=15", "monospace:size=10", "Noto Color Emoji:size=15" };
 static const char dmenufont[]       = "monospace:size=15";
 
-#include "/home/21side/.cache/wal/colors-wal-dwm.h"
+#include "/home/simon/.cache/wal/colors-wal-dwm.h"
 
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -33,8 +33,8 @@ static const char col_cyan[]        = "#005577";
 
 
 /* tagging */
-static const char *tags[] = { "O", "w", "O", "U", "w", "U", ">", "w", "<" };
-//static const char *tags[] = { "󱦗", "󱦘", "󱦗", "󱦘", "󱦗", "󱦘", "󱦗", "󱦘", "󱦗" };
+static const char *tags[] = { "H", "He", "Li", "Be", "B", "C", "N", "O", "F" };
+//static const char *tags[] = { "O", "w", "O", "U", "w", "U", ">", "w", "<" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -88,7 +88,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = dmenucmd } },
-	{ MODKEY,			            XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -97,19 +97,19 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_z,	   zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,			            XK_c,      killclient,     {0} },
-	{ Mod1Mask,			            XK_F4,     killclient,     {0} },
+//	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,						XK_c,      killclient,     {0} },
+	{ Mod1Mask,						XK_F4,     killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,			            XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,						XK_space,  togglefloating, {0} },
+//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+//	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+//	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+//	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+//	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -122,14 +122,15 @@ static const Key keys[] = {
 	{ MODKEY,						XK_Left,   shiftview,	   {.i = -1} },
 	{ MODKEY,						XK_Right,  shiftview,	   {.i = +1} },
 	{ MODKEY|ShiftMask,		        XK_q,      quit,           {0} },
-	{ 0,							XK_Print,	spawn,			{.v = (const char*[]){ "flameshot", "gui", NULL } } },
-	//{ 0,							XK_section, spawn,				{.v = (const char*[]){ "xdotool", "type", "'🎀'", NULL } } },
-
-	{ 0,							XF86XK_MonBrightnessUp,		spawn,		{.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
-	{ 0,							XF86XK_MonBrightnessDown,	spawn,		{.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
-	{ 0,							XF86XK_AudioMute,			spawn,		SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
-	{ 0,							XF86XK_AudioRaiseVolume,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+; kill -44 $(pidof dwmblocks)") },
-	{ 0,							XF86XK_AudioLowerVolume,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-; kill -44 $(pidof dwmblocks)") },
+	{ 0,							XK_Print,  spawn,		   {.v = (const char*[]){ "flameshot", "gui", NULL } } },
+	//{ 0,							XK_section,spawn,		   {.v = (const char*[]){ "xdotool", "type", "'🎀'", NULL } } },
+	//{ MODKEY,						XK_period, spawn,			SHCMD("xdotool type $(cat /Documents/Code/dwm/emoji | dmenu -i -l 10 | cut -d' ' -f1)") },
+	{ MODKEY,						XK_period,					spawn,	SHCMD("cat /Documents/Code/dwm/emoji | dmenu -i -l 10 >> mylog.log") },
+	{ 0,							XF86XK_MonBrightnessUp,		spawn,	SHCMD("brillo -q -A 5")},
+	{ 0,							XF86XK_MonBrightnessDown,	spawn,	SHCMD("brillo -q -U 5")},
+	{ 0,							XF86XK_AudioMute,			spawn,	SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+	{ 0,							XF86XK_AudioRaiseVolume,	spawn,	SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+; kill -44 $(pidof dwmblocks)") },
+	{ 0,							XF86XK_AudioLowerVolume,	spawn,	SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-; kill -44 $(pidof dwmblocks)") },
 
 };
 
