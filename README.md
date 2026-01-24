@@ -13,5 +13,7 @@ the code is the documentation.
 * Any nerd font
 * [Lion Cub mono](https://github.com/SimonCantCode/LionCub_mono) (optional, the font in the screenshot)
 * Pipewire and wireplumber
+* [mybar](https://github.com/SimonCantCode/mybar) for the bar
+
 ### AUR Dependencies
 * Brillo
