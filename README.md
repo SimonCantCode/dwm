@@ -17,3 +17,4 @@ the code is the documentation.
 
 ### AUR Dependencies
 * Brillo
+* libinput-gestures (optional)
