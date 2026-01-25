@@ -11,9 +11,9 @@ the code is the documentation.
 
 ## Dependencies
 * Any nerd font
-* [Lion Cub mono](https://github.com/SimonCantCode/LionCub_mono) (optional, the font in the screenshot)
+* [Lion Cub mono](https://github.com/SimonCantCode/LionCub_mono) (optional, the font in the first screenshot)
 * Pipewire and wireplumber
-* [mybar](https://github.com/SimonCantCode/mybar) for the bar
+* [mybar](https://github.com/SimonCantCode/mybar) for the bar (optional)
 
 ### AUR Dependencies
 * Brillo
