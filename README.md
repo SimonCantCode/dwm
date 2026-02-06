@@ -2,9 +2,9 @@
 
 ![](pictures/2025-08-02.png)
 Figure 1. Newest rice
-<br><br>  
-![](pictures/winter_rice.png)
-Figure 2. Old winter rice. Not much has changed
+
+> [!NOTE]
+> There are some absolute paths in `config.h` that you may have to change or remove to get it to compile. Specifically regarding pywal colors and scripts in the scripts folder.
 
 ## Documentation
 the code is the documentation.
