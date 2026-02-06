@@ -1,7 +1,7 @@
 # dwm ![](https://img.shields.io/badge/autism-included-brightgreen)
 
 ![](pictures/2025-08-02.png)
-Figure 1. Newest rice but still a bit outdated.
+Figure 1. Newest rice pic but still a bit outdated.
 
 > [!NOTE]
 > There are some absolute paths in `config.h` that you may have to change or remove to get it to compile. Specifically regarding pywal colors and scripts in the scripts folder.
